@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 17px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
+.btn {
+  width: 45px;
+  aspect-ratio: 1;
+  line-height: 4px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+}
+
+.todo-app-container {
+  display: block;
+  width: 400px;
+  max-width: 100%;
+  margin: auto;
+}
+
+@media screen and (max-width: 480px) {
+  .todo-app-container {
+    padding: 20px;
+  }
+}
+
+.add-todo {
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.add-todo .add-todo-input {
+  font-weight: 700;
+  padding: 15px;
+  width: 78.5%;
+  background-color: #08080C;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: none;
+  outline: none;
+}
+
+.add-todo .add-todo-btn {
+  background-color: #3939C6;
+}
+
+.todos .todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+  max-width: 100%;
+}
+
+.todos .todo-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.todos .todo-text::first-letter {
+  text-transform: capitalize;
+}
+
+.todos .remove-todo-btn,
+.todos .edit-todo-btn,
+.todos .cancel-edit-todo-btn,
+.todos .edit-check-btn {
+  width: 35px;
+  margin-right: 1px;
+  background-color: transparent;
+  transition: all 350ms ease-in-out;
+}
+
+.todos .remove-todo-btn:hover,
+.todos .cancel-edit-todo-btn {
+  background-color: red;
+}
+
+.todos .edit-todo-btn:hover,
+.todos .edit-check-btn:hover {
+  background-color: #3939C6;
+}
+
+
+.todos .edit-todo-input {
+  border: none;
+  border-bottom: 2px solid #3939C6;
+  padding-bottom: 3px;
+  outline: none;
+  background-color: transparent;
+  caret-color: #3939C6;
+}
