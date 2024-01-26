@@ -61,6 +61,11 @@ body {
   }
 }
 
+.todo-app-container h1 {
+  font-size: 3rem;
+  text-align: center;
+} 
+
 .add-todo {
   margin-bottom: 20px;
   margin-top: 40px;

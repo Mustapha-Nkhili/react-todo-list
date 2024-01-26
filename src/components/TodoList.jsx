@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import TodoItem from "./TodoItem";
 import { useLayoutEffect, useRef } from "react";
+import TodosFilter from "./TodosFilter";
 
 export default function TodoList() {
   const todos = useSelector((store) => store);
@@ -18,6 +19,7 @@ export default function TodoList() {
 
   return (
     <main className="todos" ref={todosRef}>
+      <TodosFilter />
       {todos.map((todo) => {
         return <TodoItem todo={todo} key={todo.id} />;
       })}
