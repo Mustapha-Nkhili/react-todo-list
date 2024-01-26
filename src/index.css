@@ -7,19 +7,18 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
+  --blue-color: #3939C6;
+  --red-color: #cc0000;
+  --white-color: #fff;
+
+  --add-todo-input-bg: #08080C;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  text-align: center;
-}
 
 button:focus,
 button:focus-visible {

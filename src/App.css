@@ -70,7 +70,7 @@ body {
   font-weight: 700;
   padding: 15px;
   width: 78.5%;
-  background-color: #08080C;
+  background-color: var(--add-todo-input-bg);
   border-radius: 5px;
   margin-right: 10px;
   border: none;
@@ -78,7 +78,7 @@ body {
 }
 
 .add-todo .add-todo-btn {
-  background-color: #3939C6;
+  background-color: var(--blue-color);
 }
 
 .todos .todo {
@@ -87,7 +87,7 @@ body {
   align-items: center;
   padding: 5px;
   margin-bottom: 10px;
-  border: 2px solid white;
+  border: 2px solid var(--white-color);
   border-radius: 5px;
   max-width: 100%;
 }
@@ -115,9 +115,9 @@ body {
 
 .todos .toggle-status-btn svg {
   position: relative;
-  color: white;
-  background-color: #3939C6;
-  border: 3px solid #3939C6;
+  color: var(--white-color);
+  background-color: var(--blue-color);
+  border: 3px solid var(--blue-color);
   border-radius: 4px;
   top: -3px;
   left: -3px;
@@ -146,20 +146,20 @@ body {
 
 .todos .remove-todo-btn:hover,
 .todos .cancel-edit-todo-btn {
-  background-color: red;
+  background-color: var(--red-color);
 }
 
 .todos .edit-todo-btn:hover,
 .todos .edit-check-btn:hover {
-  background-color: #3939C6;
+  background-color: var(--blue-color);
 }
 
 
 .todos .edit-todo-input {
   border: none;
-  border-bottom: 2px solid #3939C6;
+  border-bottom: 2px solid var(--blue-color);
   padding-bottom: 3px;
   outline: none;
   background-color: transparent;
-  caret-color: #3939C6;
+  caret-color: var(--blue-color);
 }
