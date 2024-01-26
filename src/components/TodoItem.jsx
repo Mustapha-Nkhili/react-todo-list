@@ -40,7 +40,7 @@ export default function TodoItem({ todo }) {
   }
 
   function handleToggleTodoStatus() {
-    dispatch(toggleTodoStatus(todoId))
+    dispatch(toggleTodoStatus(todoId));
   }
   return (
     <div className="todo" key={todoId} id={todoId}>
@@ -61,7 +61,9 @@ export default function TodoItem({ todo }) {
       ) : (
         <div className="todo-text-container">
           <button
-            className={classnames("toggle-status-btn", {active: todo.completed})}
+            className={classnames("toggle-status-btn", {
+              active: todo.completed,
+            })}
             onClick={handleToggleTodoStatus}
           >
             <FontAwesomeIcon icon={faCheck} />

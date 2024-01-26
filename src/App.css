@@ -125,7 +125,7 @@ body {
   transition: 0.3s;
 }
 
-.todos .toggle-status-btn.clicked svg {
+.todos .toggle-status-btn.active svg {
   transform: scale(1);
 }
 
