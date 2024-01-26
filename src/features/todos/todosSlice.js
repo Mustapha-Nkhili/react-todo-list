@@ -23,6 +23,13 @@ export function todoReducer(state = initialState, action) {
         }
         return todo;
       });
+    case "todos/toggleTodoStatus":
+      return state.map((todo) => {
+        if (todo.id === action.id) {
+          return { ...todo, completed: !todo.completed };
+        }
+        return todo;
+      });
     default:
       return state;
   }

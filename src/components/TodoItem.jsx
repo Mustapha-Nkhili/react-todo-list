@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteTodo, editTodo } from "../actions";
+import { deleteTodo, editTodo, toggleTodoStatus } from "../actions";
+import classnames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheck,
@@ -37,6 +38,10 @@ export default function TodoItem({ todo }) {
   function handleDeleteTodo() {
     dispatch(deleteTodo(todoId));
   }
+
+  function handleToggleTodoStatus() {
+    dispatch(toggleTodoStatus(todoId))
+  }
   return (
     <div className="todo" key={todoId} id={todoId}>
       {isTodoModifing ? (
@@ -56,8 +61,8 @@ export default function TodoItem({ todo }) {
       ) : (
         <div className="todo-text-container">
           <button
-            className="toggle-status-btn"
-            onClick={(e) => e.currentTarget.classList.toggle("clicked")}
+            className={classnames("toggle-status-btn", {active: todo.completed})}
+            onClick={handleToggleTodoStatus}
           >
             <FontAwesomeIcon icon={faCheck} />
           </button>

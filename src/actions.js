@@ -20,3 +20,9 @@ export const editTodo = (id, text) => {
   };
 };
 
+export const toggleTodoStatus = (id) => {
+  return {
+    type: "todos/toggleTodoStatus",
+    id: id
+  }
+}
