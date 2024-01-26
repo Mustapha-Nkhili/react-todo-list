@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteTodo, editTodo } from "../actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,7 +9,7 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function TodoItem({ todo, key }) {
+export default function TodoItem({ todo }) {
   const dispatch = useDispatch();
   const todoId = todo.id;
   const [isTodoModifing, setIsTodoModifing] = useState(false);
@@ -38,7 +38,7 @@ export default function TodoItem({ todo, key }) {
     dispatch(deleteTodo(todoId));
   }
   return (
-    <div className="todo" key={key} id={todoId}>
+    <div className="todo" key={todoId} id={todoId}>
       {isTodoModifing ? (
         <div>
           <input

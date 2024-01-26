@@ -1,20 +1,20 @@
 export const deleteTodo = (id) => {
   return {
-    type: "DELETE_TODO",
+    type: "todos/deleteTodo",
     id: id,
   };
 };
 
 export const addTodo = (text) => {
   return {
-    type: "ADD_TODO",
+    type: "todos/addTodo",
     text: text,
   };
 };
 
 export const editTodo = (id, text) => {
   return {
-    type: "EDIT_TODO",
+    type: "todos/editTodo",
     id: id,
     modifiedText: text,
   };

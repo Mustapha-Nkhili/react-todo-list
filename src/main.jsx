@@ -4,7 +4,7 @@ import App from "./App.jsx";
 import "./index.css";
 import { Provider } from "react-redux";
 import { legacy_createStore } from "redux";
-import { todoReducer } from "./reducers.js";
+import { todoReducer } from "./features/todos/todosSlice.js";
 import { applyMiddleware } from "redux";
 import { thunk } from "redux-thunk";
 
