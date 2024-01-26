@@ -54,7 +54,15 @@ export default function TodoItem({ todo }) {
           </button>
         </div>
       ) : (
-        <span className="todo-text">{todo.text}</span>
+        <div className="todo-text-container">
+          <button
+            className="toggle-status-btn"
+            onClick={(e) => e.currentTarget.classList.toggle("clicked")}
+          >
+            <FontAwesomeIcon icon={faCheck} />
+          </button>
+          <span className="todo-text">{todo.text}</span>
+        </div>
       )}
 
       <div id={todo.id}>

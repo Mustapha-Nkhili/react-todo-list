@@ -17,10 +17,10 @@ export default function TodoList() {
   }, [todosRef]);
 
   return (
-    <div className="todos" ref={todosRef}>
+    <main className="todos" ref={todosRef}>
       {todos.map((todo) => {
         return <TodoItem todo={todo} key={todo.id} />;
       })}
-    </div>
+    </main>
   );
 }
