@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 import TodosFilter from "./TodosFilter";
 
 export default function TodoList() {
-  const todos = useSelector((store) => store);
+  const todos = useSelector((store) => store.todos);
   const todosRef = useRef();
 
   useLayoutEffect(() => {
