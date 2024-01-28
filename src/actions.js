@@ -26,3 +26,17 @@ export const toggleTodoStatus = (id) => {
     id: id
   }
 }
+
+
+export const addStatusFilter = (status) => {
+  return {
+    type: "filters/changeTodosFilterStatus",
+    status: status,
+  }
+}
+
+export const addColorFilter = (color) => {
+  return {
+    type: 'filters/changeTodosFilterColor'
+  }
+}

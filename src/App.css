@@ -1,6 +1,8 @@
 * {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -64,7 +66,7 @@ body {
 .todo-app-container h1 {
   font-size: 3rem;
   text-align: center;
-} 
+}
 
 .add-todo {
   margin-bottom: 20px;
@@ -167,4 +169,88 @@ body {
   outline: none;
   background-color: transparent;
   caret-color: var(--blue-color);
+}
+
+.todos-filter {
+  display: flex;
+  justify-content: end;
+  position: relative;
+}
+
+
+.todos-filter .filter-icon {
+  width: 30px;
+  aspect-ratio: 1;
+  text-align: center;
+  line-height: 30px;
+  background-color: var(--black-color);
+  border-radius: 50%;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.todos-filter .content {
+  position: absolute;
+  top: -400%;
+  opacity: 0;
+  width: fit-content;
+  background-color: var(--black-color);
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.todos-filter .content.display-filter-options {
+  top: 40px;
+  opacity: 1;
+}
+
+.todos-filter select {
+  /* styling */
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+  width: 150px;
+  font: inherit;
+  font-weight: 600;
+  padding: 8px 30px 8px 16px;
+  margin: 5px 0 0 5px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    radial-gradient(#ddd 70%, transparent 72%);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    calc(100% - .5em) .5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1.5em 1.5em;
+  background-repeat: no-repeat;
+
+  /* reset */
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: 0;
+
+  cursor: pointer;
+}
+
+.todos-filter select.clicked {
+  background-image:
+    linear-gradient(45deg, white 50%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, white 50%),
+    radial-gradient(gray 70%, transparent 72%);
+  background-position:
+    calc(100% - 15px) 1em,
+    calc(100% - 20px) 1em,
+    calc(100% - .5em) .5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1.5em 1.5em;
+  background-repeat: no-repeat;
 }

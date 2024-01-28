@@ -5,6 +5,7 @@ import TodosFilter from "./TodosFilter";
 
 export default function TodoList() {
   const todos = useSelector((store) => store.todos);
+  const statusFilter = useSelector((store) => store.filters.status);
   const todosRef = useRef();
 
   useLayoutEffect(() => {
@@ -17,12 +18,21 @@ export default function TodoList() {
     }
   }, [todosRef]);
 
+  const filteredTodos = todos.filter((todo) => {
+    return (
+      (statusFilter === "uncompleted" && !todo.completed) ||
+      (statusFilter === "completed" && todo.completed) ||
+      statusFilter === "all"
+    );
+  });
   return (
-    <main className="todos" ref={todosRef}>
+    <>
       <TodosFilter />
-      {todos.map((todo) => {
-        return <TodoItem todo={todo} key={todo.id} />;
-      })}
-    </main>
+      <main className="todos" ref={todosRef}>
+        {filteredTodos.map((todo) => {
+          return <TodoItem todo={todo} key={todo.id} />;
+        })}
+      </main>
+    </>
   );
 }
