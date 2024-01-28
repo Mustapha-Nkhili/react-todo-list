@@ -7,10 +7,11 @@ export default function TodoList() {
   const todos = useSelector((store) => store.todos);
   const statusFilter = useSelector((store) => store.filters.status);
   const todosRef = useRef();
+  const MAX_HEIGHT = 350;
 
   useLayoutEffect(() => {
-    if (todosRef.current.offsetHeight > 350) {
-      todosRef.current.style.height = "350px";
+    if (todosRef.current.offsetHeight > MAX_HEIGHT) {
+      todosRef.current.style.height = `${MAX_HEIGHT}px`;
       todosRef.current.style.overflowY = "scroll";
     } else {
       todosRef.current.style.height = "auto";
