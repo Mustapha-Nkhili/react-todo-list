@@ -12,10 +12,10 @@ import {
 
 export default function TodoItem({ todo }) {
   const dispatch = useDispatch();
+  const editInputRef = useRef();
   const todoId = todo.id;
   const [isTodoModifing, setIsTodoModifing] = useState(false);
   const [modifiedText, setModifiedText] = useState("");
-  const editInputRef = useRef();
 
   function handleTodoTextChanges(e) {
     setModifiedText(e.target.value);

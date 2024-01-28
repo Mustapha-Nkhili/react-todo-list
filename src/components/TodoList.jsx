@@ -4,9 +4,9 @@ import { useLayoutEffect, useRef } from "react";
 import TodosFilter from "./TodosFilter";
 
 export default function TodoList() {
+  const todosRef = useRef();
   const todos = useSelector((store) => store.todos);
   const statusFilter = useSelector((store) => store.filters.status);
-  const todosRef = useRef();
   const MAX_HEIGHT = 350;
 
   useLayoutEffect(() => {

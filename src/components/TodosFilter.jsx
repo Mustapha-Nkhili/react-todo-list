@@ -9,12 +9,14 @@ export default function TodosFilter() {
   const dispatch = useDispatch();
   const [isFilterOptionsDisplayed, setIsFilterOptionsDIsplayed] =
     useState(false);
-  const state = useSelector(store => store.filters)
+  const state = useSelector((store) => store.filters);
 
+  // Toggle display of filter options when filter icon is clicked
   function handleFilterOptionsDisplaying() {
     setIsFilterOptionsDIsplayed((prev) => !prev);
   }
 
+  // Handle filtering for both status and colors
   function handleStatusFilter(e) {
     e.target.classList.toggle("clicked");
     dispatch(addStatusFilter(e.target.value !== "" ? e.target.value : "all"));
@@ -22,7 +24,7 @@ export default function TodosFilter() {
 
   function handleColorsFilter(e) {
     e.target.classList.toggle("clicked");
-    dispatch(addColorFilter(e.target.value !== "" ? e.target.value : "white"))
+    dispatch(addColorFilter(e.target.value !== "" ? e.target.value : "white"));
   }
 
   return (

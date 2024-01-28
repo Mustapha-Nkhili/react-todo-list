@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
 
 export default function AddTodo() {
-  const inputRef = useRef();
   const dispatch = useDispatch();
+  const inputRef = useRef();
   const addBtnRef = useRef();
 
   function handleAddTodo() {
