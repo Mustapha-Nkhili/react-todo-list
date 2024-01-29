@@ -10,7 +10,7 @@ export default function AddTodo() {
   const addBtnRef = useRef();
 
   function handleAddTodo() {
-    dispatch(addTodo(inputRef.current.value));
+    dispatch(addTodo(inputRef.current.value.trim()));
     inputRef.current.value = "";
   }
 
@@ -25,23 +25,6 @@ export default function AddTodo() {
     }
   };
 
-  useEffect(() => {
-    const inputElement = inputRef.current;
-    const addBtnElement = addBtnRef.current;
-
-    // Attach the event listener to the input element when the component mounts
-    if (inputElement && addBtnElement) {
-      inputElement.addEventListener("keydown", handleKeyPress);
-    }
-
-    // Remove the event listener when the component unmounts
-    return () => {
-      if (inputElement) {
-        inputElement.removeEventListener("keydown", handleKeyPress);
-      }
-    };
-  }, [inputRef]);
-
   return (
     <div className="add-todo">
       <input
@@ -49,6 +32,7 @@ export default function AddTodo() {
         className="add-todo-input"
         ref={inputRef}
         placeholder="Enter what you want todo"
+        onKeyDown={handleKeyPress}
       />
       <button
         onClick={handleAddTodo}
