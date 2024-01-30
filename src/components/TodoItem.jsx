@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { deleteTodo, editTodo, toggleTodoStatus } from "../actions";
 import classnames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,8 +13,9 @@ import {
 export default function TodoItem({ todoId }) {
   const dispatch = useDispatch();
   const editInputRef = useRef();
-  const todo = useSelector((state) =>
-    state.todos.find(({ id }) => id === todoId)
+  const todo = useSelector(
+    (state) => state.todos.find(({ id }) => id === todoId),
+    shallowEqual
   );
   const [isTodoModifing, setIsTodoModifing] = useState(false);
   const [modifiedText, setModifiedText] = useState("");

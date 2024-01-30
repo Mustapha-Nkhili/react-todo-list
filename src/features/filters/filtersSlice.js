@@ -19,11 +19,8 @@ export default function filtersReducer(state = initialState, action) {
   }
 }
 
-
 export const selectFilteredTodoIds = createSelector(
-  selectTodoIds,
-  (state) => state.todos,
-  (state) => state.filters.status,
+  [selectTodoIds, (state) => state.todos, (state) => state.filters.status],
   (todosId, todos, status) => {
     return todosId.filter((todoId, index) => {
       if (todoId === todos[index].id) {
