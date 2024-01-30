@@ -1,4 +1,5 @@
 import { nanoid } from "nanoid";
+import { createSelector } from "reselect";
 
 const initialState = [];
 
@@ -46,3 +47,8 @@ export default function todoReducer(state = initialState, action) {
       return state;
   }
 }
+
+export const selectTodoIds = createSelector(
+  (state) => state.todos,
+  (todos) => todos.map((todo) => todo.id)
+);

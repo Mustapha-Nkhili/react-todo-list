@@ -2,14 +2,12 @@ import { useSelector, shallowEqual } from "react-redux";
 import TodoItem from "./TodoItem";
 import { useLayoutEffect, useRef } from "react";
 import TodosFilter from "./TodosFilter";
+import { selectTodoIds } from "../features/todos/todosSlice";
 
 export default function TodoList() {
   const todosRef = useRef();
   const todos = useSelector((store) => store.todos);
-  const todosId = useSelector(
-    (state) => state.todos.map((todo) => todo.id),
-    shallowEqual
-  );
+  const todosId = useSelector(selectTodoIds);
   const statusFilter = useSelector((store) => store.filters.status);
   const MAX_HEIGHT = 350;
 
@@ -32,7 +30,7 @@ export default function TodoList() {
       );
     }
   });
-  
+
   return (
     <>
       <TodosFilter />
