@@ -1,14 +1,12 @@
-import { useSelector, shallowEqual } from "react-redux";
+import { useSelector } from "react-redux";
 import TodoItem from "./TodoItem";
 import { useLayoutEffect, useRef } from "react";
 import TodosFilter from "./TodosFilter";
-import { selectTodoIds } from "../features/todos/todosSlice";
+import { selectFilteredTodoIds } from "../features/filters/filtersSlice";
 
 export default function TodoList() {
   const todosRef = useRef();
-  const todos = useSelector((store) => store.todos);
-  const todosId = useSelector(selectTodoIds);
-  const statusFilter = useSelector((store) => store.filters.status);
+  const filteredTodosId = useSelector(selectFilteredTodoIds)
   const MAX_HEIGHT = 350;
 
   useLayoutEffect(() => {
@@ -21,21 +19,12 @@ export default function TodoList() {
     }
   }, [todosRef]);
 
-  const filteredTodos = todosId.filter((todoId, index) => {
-    if (todoId === todos[index].id) {
-      return (
-        (statusFilter === "uncompleted" && !todos[index].completed) ||
-        (statusFilter === "completed" && todos[index].completed) ||
-        statusFilter === "all"
-      );
-    }
-  });
 
   return (
     <>
       <TodosFilter />
       <main className="todos" ref={todosRef}>
-        {filteredTodos.map((todoId) => {
+        {filteredTodosId.map((todoId) => {
           return <TodoItem todoId={todoId} key={todoId} />;
         })}
       </main>
