@@ -9,13 +9,13 @@ import {
   faTrash,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
-import ColorFiltersSelect from "./todoComponents/ColorFiltersSelect";
+import TodoColorSelector from "./todoComponents/TodoColorSelector";
 
 export default function TodoItem({ todoId }) {
   const dispatch = useDispatch();
   const editInputRef = useRef();
   const todo = useSelector(
-    (state) => state.todos.find((todo) => todo.id === todoId),
+    (state) => state.todos.find(({ id }) => id === todoId),
     shallowEqual
   );
   const [isTodoModifing, setIsTodoModifing] = useState(false);
@@ -46,7 +46,6 @@ export default function TodoItem({ todoId }) {
   function handleToggleTodoStatus() {
     dispatch(toggleTodoStatus(todoId));
   }
-  console.log(todo)
   return (
     <div className="todo" key={todoId} id={todoId}>
       {isTodoModifing ? (
@@ -83,7 +82,7 @@ export default function TodoItem({ todoId }) {
           justifyContent: "center",
         }}
       >
-        <ColorFiltersSelect todoId={todoId} />
+        <TodoColorSelector todoId={todoId} />
         {isTodoModifing ? (
           <button
             className="cancel-edit-todo-btn btn"
