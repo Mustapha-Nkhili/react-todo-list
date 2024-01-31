@@ -27,3 +27,9 @@ export const addStatusFilter = (status) => ({
 export const addColorFilter = (color) => ({
   type: "filters/changeTodosFilterColor",
 });
+
+export const addTodoColor = (id, color) => ({
+  type: "todos/addTodoColor",
+  id: id,
+  color: color,
+});

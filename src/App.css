@@ -198,6 +198,7 @@ body {
   border-radius: 6px;
   padding: 10px;
   margin-bottom: 10px;
+  z-index: 4;
   transition: 0.3s;
 }
 
@@ -253,4 +254,49 @@ body {
     5px 5px,
     1.5em 1.5em;
   background-repeat: no-repeat;
+}
+
+.select-colors {
+  position: relative;
+  width: 70px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.select-colors.clicked {
+  border-radius: 5px 5px 0 0;
+}
+.select-colors span:first-of-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px
+}
+
+.select-colors .select-colors-container {
+  position: absolute;
+  left: 0;
+  display: none;
+  gap: 5px;
+  width: 100%;
+  padding: 5px;
+  background-color: white;
+  border-top: 1px solid black;
+  z-index: 2;
+}
+.select-colors .select-colors-container.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.select-colors .select-colors-container span {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: red;
+  cursor: pointer;
 }

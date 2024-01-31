@@ -43,6 +43,16 @@ export default function todoReducer(state = initialState, action) {
       localStorage.setItem("todos", JSON.stringify(todosWithToggledTodo));
       return todosWithToggledTodo;
     }
+    case "todos/addTodoColor": {
+      const todosWithColor = state.map((todo) => {
+        if (todo.id === action.id) {
+          return { ...todo, color: action.color };
+        }
+        return todo;
+      });
+      localStorage.setItem("todos", JSON.stringify(todosWithColor));
+      return todosWithColor;
+    }
     default:
       return state;
   }

@@ -19,7 +19,6 @@ export default function TodoList() {
     }
   }, [todosRef]);
 
-
   return (
     <>
       <TodosFilter />
