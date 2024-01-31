@@ -9,7 +9,7 @@ export default function TodosFilter() {
   const dispatch = useDispatch();
   const [isFilterOptionsDisplayed, setIsFilterOptionsDIsplayed] =
     useState(false);
-  const state = useSelector((store) => store.filters);
+  const colors = ["red", "green", "blue", "orange", "purple"];
 
   // Toggle display of filter options when filter icon is clicked
   function handleFilterOptionsDisplaying() {
@@ -24,7 +24,7 @@ export default function TodosFilter() {
 
   function handleColorsFilter(e) {
     e.target.classList.toggle("clicked");
-    dispatch(addColorFilter(e.target.value !== "" ? e.target.value : "white"));
+    dispatch(addColorFilter(e.target.value !== "" ? e.target.value : ""));
   }
 
   return (
@@ -46,8 +46,11 @@ export default function TodosFilter() {
         </select>
         <select name="colors" label="Colors" onClick={handleColorsFilter}>
           <option value="">Color</option>
-          <option value="red">Red</option>
-          <option value="yellow">yellow</option>
+          {colors.map((color, index) => (
+            <option key={index} value={color}>
+              {color}
+            </option>
+          ))}
         </select>
       </div>
     </div>

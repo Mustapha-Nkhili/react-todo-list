@@ -19,17 +19,18 @@ export const toggleTodoStatus = (id) => ({
   id: id,
 });
 
+export const addTodoColor = (id, color) => ({
+  type: "todos/addTodoColor",
+  id: id,
+  color: color,
+});
+
 export const addStatusFilter = (status) => ({
   type: "filters/changeTodosFilterStatus",
   status: status,
 });
 
 export const addColorFilter = (color) => ({
-  type: "filters/changeTodosFilterColor",
-});
-
-export const addTodoColor = (id, color) => ({
-  type: "todos/addTodoColor",
-  id: id,
+  type: "filters/addTodosFilterColor",
   color: color,
 });
