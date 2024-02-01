@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addColorFilter } from "../../actions";
+import { addColorFilter, removeColorFilter } from "../../actions";
 
 export default function TodoColorFilter() {
   const dispatch = useDispatch();
@@ -12,7 +12,6 @@ export default function TodoColorFilter() {
     } else {
       dispatch(removeColorFilter(color))
     }
-    console.log(filterColors);
   }
 
   return (
@@ -25,6 +24,7 @@ export default function TodoColorFilter() {
             name={color}
             id={color}
             value={color}
+            checked={filterColors.includes(color)}
             onChange={(e) => handleColorsFilter(e, color)}
           />
           <label htmlFor={color}>{color}</label>

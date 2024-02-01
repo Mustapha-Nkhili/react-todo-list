@@ -1,5 +1,6 @@
 import { legacy_createStore } from "redux";
 import rootReducer from "./reducer";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 let preloadedState;
 const persistedTodosString = localStorage.getItem("todos");
@@ -10,6 +11,6 @@ if (persistedTodosString) {
   };
 }
 
-const store = legacy_createStore(rootReducer, preloadedState);
+const store = legacy_createStore(rootReducer, preloadedState, composeWithDevTools());
 
 export default store;

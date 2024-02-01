@@ -34,3 +34,8 @@ export const addColorFilter = (color) => ({
   type: "filters/addTodosFilterColor",
   color: color,
 });
+
+export const removeColorFilter = (color) => ({
+  type: "filters/removeTodosFilterColor",
+  color: color
+});

@@ -21,6 +21,14 @@ export default function filtersReducer(state = initialState, action) {
         colors: Array.from(colors),
       };
     }
+    case "filters/removeTodosFilterColor": {
+      const colors = new Set([...state.colors]);
+      colors.delete(action.color);
+      return {
+        ...state,
+        colors: Array.from(colors)
+      }
+    }
     default:
       return state;
   }
