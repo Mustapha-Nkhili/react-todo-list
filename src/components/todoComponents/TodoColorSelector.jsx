@@ -7,10 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function TodoColorSelector({ todoId }) {
   const dispatch = useDispatch();
+  const colorsFilter = useSelector(state => state.filters.colors);
   const [isColorDisplayed, setIsColorDisplayed] = useState(false);
   const colors = ["red", "green", "blue", "orange", "purple"];
 
   function handleAddColor(color) {
+    console.log(colorsFilter)
     dispatch(addTodoColor(todoId, color));
     setIsColorDisplayed(false);
   }

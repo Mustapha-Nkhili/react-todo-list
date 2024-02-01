@@ -15,13 +15,11 @@ export default function filtersReducer(state = initialState, action) {
       };
     }
     case "filters/addTodosFilterColor": {
-      if (action.color !== "") {
-        return {
-          ...state,
-          colors: [...state.colors, action.color],
-        };
-      }
-      return { ...state };
+      const colors = new Set([...state.colors, action.color]);
+      return {
+        ...state,
+        colors: Array.from(colors),
+      };
     }
     default:
       return state;

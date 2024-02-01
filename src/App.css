@@ -47,7 +47,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
 }
 
 .todo-app-container {
@@ -55,6 +54,9 @@ body {
   width: 400px;
   max-width: 100%;
   margin: auto;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 480px) {
@@ -171,10 +173,57 @@ body {
   caret-color: var(--blue-color);
 }
 
+.todos .todo .select-colors {
+  position: relative;
+  width: 70px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.todos .todo .select-colors.clicked {
+  border-radius: 5px 5px 0 0;
+}
+
+.todos .todo .select-colors span:first-of-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px
+}
+
+.todos .todo .select-colors .select-colors-container {
+  position: absolute;
+  left: 0;
+  display: none;
+  gap: 5px;
+  width: 100%;
+  padding: 5px;
+  background-color: white;
+  border-top: 1px solid black;
+  z-index: 2;
+}
+
+.todos .todo .select-colors .select-colors-container.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.todos .todo .select-colors .select-colors-container span {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: red;
+  cursor: pointer;
+}
+
 .todos-filter {
   display: flex;
   justify-content: end;
-  position: relative;
 }
 
 
@@ -191,112 +240,35 @@ body {
 
 .todos-filter .content {
   position: absolute;
-  top: -400%;
+  bottom: -200%;
   opacity: 0;
-  width: fit-content;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
   background-color: var(--black-color);
-  border-radius: 6px;
+  border-radius: 6px 6px 0 0;
   padding: 10px;
-  margin-bottom: 10px;
   z-index: 4;
   transition: 0.3s;
 }
 
 .todos-filter .content.display-filter-options {
-  top: 40px;
+  bottom: 0;
   opacity: 1;
 }
 
-.todos-filter select {
-  /* styling */
-  background-color: white;
-  color: black;
-  border-radius: 4px;
-  width: 150px;
-  font: inherit;
+.todos-filter .content .status-filter input,
+.todos-filter .content .status-filter label,
+.todos-filter .content .color-filter input,
+.todos-filter .content .color-filter label {
+  cursor: pointer;
+}
+
+.todos-filter .content .status-filter label,
+.todos-filter .content .color-filter label {
+  font-size: 0.9rem;
   font-weight: 600;
-  padding: 8px 30px 8px 16px;
-  margin: 5px 0 0 5px;
-  background-image:
-    linear-gradient(45deg, transparent 50%, gray 50%),
-    linear-gradient(135deg, gray 50%, transparent 50%),
-    radial-gradient(#ddd 70%, transparent 72%);
-  background-position:
-    calc(100% - 20px) calc(1em + 2px),
-    calc(100% - 15px) calc(1em + 2px),
-    calc(100% - .5em) .5em;
-  background-size:
-    5px 5px,
-    5px 5px,
-    1.5em 1.5em;
-  background-repeat: no-repeat;
-
-  /* reset */
-
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  outline: 0;
-
-  cursor: pointer;
-}
-
-.todos-filter select.clicked {
-  background-image:
-    linear-gradient(45deg, white 50%, transparent 50%),
-    linear-gradient(135deg, transparent 50%, white 50%),
-    radial-gradient(gray 70%, transparent 72%);
-  background-position:
-    calc(100% - 15px) 1em,
-    calc(100% - 20px) 1em,
-    calc(100% - .5em) .5em;
-  background-size:
-    5px 5px,
-    5px 5px,
-    1.5em 1.5em;
-  background-repeat: no-repeat;
-}
-
-.select-colors {
-  position: relative;
-  width: 70px;
-  background-color: white;
-  color: black;
-  text-align: center;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.select-colors.clicked {
-  border-radius: 5px 5px 0 0;
-}
-.select-colors span:first-of-type {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px
-}
-
-.select-colors .select-colors-container {
-  position: absolute;
-  left: 0;
-  display: none;
-  gap: 5px;
-  width: 100%;
-  padding: 5px;
-  background-color: white;
-  border-top: 1px solid black;
-  z-index: 2;
-}
-.select-colors .select-colors-container.active {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.select-colors .select-colors-container span {
-  width: 15px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background-color: red;
-  cursor: pointer;
+  text-transform: capitalize;
+  margin-left: 10px;
 }
