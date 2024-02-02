@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addColorFilter, removeColorFilter } from "../../actions";
+import { addTodosFilterColor, removeTodosFilterColor } from "../../features/filters/filtersSlice";
 
 export default function TodoColorFilter() {
   const dispatch = useDispatch();
@@ -8,9 +8,9 @@ export default function TodoColorFilter() {
 
   function handleColorsFilter(e, color) {
     if (e.target.checked) {
-      dispatch(addColorFilter(color));
+      dispatch(addTodosFilterColor(color));
     } else {
-      dispatch(removeColorFilter(color))
+      dispatch(removeTodosFilterColor(color))
     }
   }
 

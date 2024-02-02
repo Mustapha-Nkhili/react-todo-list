@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addStatusFilter } from "../../actions";
+import { changeTodosFilterStatus } from "../../features/filters/filtersSlice";
 
 export default function StatusTodosFilter() {
   const dispatch = useDispatch();
@@ -7,7 +7,7 @@ export default function StatusTodosFilter() {
   const statusArr = ["all", "completed", "uncompleted"];
 
   function handleStatusFilter(e) {
-    dispatch(addStatusFilter(e.target.value));
+    dispatch(changeTodosFilterStatus(e.target.value));
   }
 
   return (

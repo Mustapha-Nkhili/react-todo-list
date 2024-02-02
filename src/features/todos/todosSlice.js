@@ -1,80 +1,84 @@
+import { createSlice } from "@reduxjs/toolkit";
 import { nanoid } from "nanoid";
-import { createSelector } from "reselect";
+import { createSelector } from "@reduxjs/toolkit";
 
 const initialState = [];
 
-export default function todoReducer(state = initialState, action) {
-  switch (action.type) {
-    case "todos/addTodo":
-      if (action.text !== "") {
-        const todos = [
-          ...state,
-          { id: nanoid(), text: action.text, completed: false },
-        ];
-        localStorage.setItem("todos", JSON.stringify(todos));
-
-        return todos;
-      } else {
-        return [...state];
+const todosSlice = createSlice({
+  name: "todos",
+  initialState,
+  reducers: {
+    addTodo(state, action) {
+      if (action.payload !== "") {
+        state.push({ id: nanoid(), text: action.payload, completed: false });
+        localStorage.setItem("todos", JSON.stringify(state));
       }
-    case "todos/deleteTodo": {
-      const undeletedTodos = state.filter((todo) => todo.id !== action.id);
-      localStorage.setItem("todos", JSON.stringify(undeletedTodos));
-
-      return undeletedTodos;
-    }
-    case "todos/editTodo": {
-      const todosWithEditedTodo = state.map((todo) => {
-        if (todo.id === action.id) {
-          return { ...todo, text: action.modifiedText };
+    },
+    deleteTodo(state, action) {
+      state.map((todo, index) => {
+        if (todo.id === action.payload) {
+          state.splice(index, 1);
         }
-
-        return todo;
       });
-      localStorage.setItem("todos", JSON.stringify(todosWithEditedTodo));
-      
-      return todosWithEditedTodo;
-    }
-    case "todos/toggleTodoStatus": {
-      const todosWithToggledTodo = state.map((todo) => {
-        if (todo.id === action.id) {
-          return { ...todo, completed: !todo.completed };
+      localStorage.setItem("todos", JSON.stringify(state));
+    },
+    editTodo(state, action) {
+      const { id, modifiedText } = action.payload;
+
+      state.map((todo) => {
+        if (todo.id === id) {
+          todo.text = modifiedText;
         }
-        return todo;
       });
-      localStorage.setItem("todos", JSON.stringify(todosWithToggledTodo));
-
-      return todosWithToggledTodo;
-    }
-    case "todos/addTodoColor": {
-      const todosWithColor = state.map((todo) => {
-        if (todo.id === action.id) {
-          return { ...todo, color: action.color };
+      localStorage.setItem("todos", JSON.stringify(state));
+    },
+    toggleTodoStatus(state, action) {
+      state.map((todo) => {
+        if (todo.id === action.payload) {
+          todo.completed = !todo.completed;
         }
-        return todo;
       });
-      localStorage.setItem("todos", JSON.stringify(todosWithColor));
-
-      return todosWithColor;
-    }
-    case "todos/markAllTodosCompleted": {
-      const allCompletedTodos = state.map((todo) => {
-        return { ...todo, completed: true };
+      localStorage.setItem("todos", JSON.stringify(state));
+    },
+    addTodoColor(state, action) {
+      const { id, color } = action.payload;
+      state.map((todo) => {
+        if (id === todo.id) {
+          todo.color = color;
+        }
       });
-      localStorage.setItem("todos", JSON.stringify(allCompletedTodos));
+      localStorage.setItem("todos", JSON.stringify(state));
+    },
+    markAllTodosCompleted(state, action) {
+      state.map((todo) => {
+        if (!todo.completed) {
+          todo.completed = true;
+        }
+      });
+      localStorage.setItem("todos", JSON.stringify(state));
+    },
+    clearAllCompletedTodos(state, action) {
+      state.forEach((todo, index) => {
+        if (todo.completed) {
+          state.splice(index, 1)
+        }
+      });
+      localStorage.setItem("todos", JSON.stringify(state));
+    },
+  },
+});
 
-      return allCompletedTodos;
-    }
-    case "todos/clearAllCompletedTodos": {
-      const uncompletedTodos = state.filter((todo) => !todo.completed);
-      localStorage.setItem("todos", JSON.stringify(uncompletedTodos));
+export const {
+  addTodo,
+  deleteTodo,
+  editTodo,
+  toggleTodoStatus,
+  addTodoColor,
+  markAllTodosCompleted,
+  clearAllCompletedTodos,
+} = todosSlice.actions;
 
-      return uncompletedTodos;
-    }
-    default:
-      return state;
-  }
-}
+export default todosSlice.reducer;
 
 export const selectTodoIds = createSelector(
   (state) => state.todos,

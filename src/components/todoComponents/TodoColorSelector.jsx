@@ -2,7 +2,7 @@ import { useState } from "react";
 import classnames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { addTodoColor } from "../../actions";
+import { addTodoColor } from "../../features/todos/todosSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function TodoColorSelector({ todoId }) {
@@ -13,7 +13,7 @@ export default function TodoColorSelector({ todoId }) {
 
   function handleAddColor(color) {
     console.log(colorsFilter)
-    dispatch(addTodoColor(todoId, color));
+    dispatch(addTodoColor({id: todoId, color}));
     setIsColorDisplayed(false);
   }
 

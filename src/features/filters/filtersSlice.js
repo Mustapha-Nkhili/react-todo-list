@@ -1,38 +1,32 @@
-import { createSelector } from "reselect";
 import { selectTodoIds } from "../todos/todosSlice";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   status: "all",
   colors: [],
 };
 
-export default function filtersReducer(state = initialState, action) {
-  switch (action.type) {
-    case "filters/changeTodosFilterStatus": {
-      return {
-        ...state,
-        status: action.status,
-      };
-    }
-    case "filters/addTodosFilterColor": {
-      const colors = new Set([...state.colors, action.color]);
-      return {
-        ...state,
-        colors: Array.from(colors),
-      };
-    }
-    case "filters/removeTodosFilterColor": {
+
+const filtersSlice = createSlice({
+  name: "filters",
+  initialState,
+  reducers: {
+    changeTodosFilterStatus(state, action) {
+      state.status = action.payload;
+    },
+    addTodosFilterColor(state, action) {
+      const colors = new Set([...state.colors, action.payload]);
+
+      state.colors = Array.from(colors);
+    },
+    removeTodosFilterColor(state, action) {
       const colors = new Set([...state.colors]);
-      colors.delete(action.color);
-      return {
-        ...state,
-        colors: Array.from(colors)
-      }
-    }
-    default:
-      return state;
-  }
-}
+      colors.delete(action.payload);
+
+      state.colors = Array.from(colors);
+    },
+  },
+});
 
 export const selectFilteredTodoIds = createSelector(
   selectTodoIds,
@@ -56,3 +50,11 @@ export const selectFilteredTodoIds = createSelector(
     });
   }
 );
+
+export const {
+  changeTodosFilterStatus,
+  addTodosFilterColor,
+  removeTodosFilterColor,
+} = filtersSlice.actions;
+
+export default filtersSlice.reducer;

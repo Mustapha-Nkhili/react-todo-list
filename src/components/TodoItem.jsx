@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { deleteTodo, editTodo, toggleTodoStatus } from "../actions";
+import { deleteTodo, editTodo, toggleTodoStatus } from "../features/todos/todosSlice";
 import classnames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -26,8 +26,8 @@ export default function TodoItem({ todoId }) {
   }
 
   function handleTodoEdited() {
-    dispatch(editTodo(todoId, modifiedText));
     setIsTodoModifing(false);
+    dispatch(editTodo({id: todoId, modifiedText}));
   }
 
   function handleCancelTodoEdit() {

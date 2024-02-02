@@ -1,6 +1,6 @@
-import { legacy_createStore } from "redux";
-import rootReducer from "./reducer";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { configureStore } from "@reduxjs/toolkit";
+import todoReducer from "./features/todos/todosSlice";
+import filtersReducer from "./features/filters/filtersSlice";
 
 let preloadedState;
 const persistedTodosString = localStorage.getItem("todos");
@@ -11,6 +11,12 @@ if (persistedTodosString) {
   };
 }
 
-const store = legacy_createStore(rootReducer, preloadedState, composeWithDevTools());
+const store = configureStore({
+  reducer: {
+    todos: todoReducer,
+    filters: filtersReducer,
+  },
+  preloadedState
+});
 
 export default store;
