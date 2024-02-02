@@ -5,35 +5,28 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-
 ::-webkit-scrollbar {
   width: 17px;
 }
-
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
   background-color: #d6dee1;
 }
-
 ::-webkit-scrollbar-thumb {
   background-color: #d6dee1;
   border-radius: 20px;
 }
-
 ::-webkit-scrollbar-thumb {
   background-color: #d6dee1;
   border-radius: 20px;
   border: 6px solid transparent;
   background-clip: content-box;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background-color: #a8bbbf;
 }
-
 .btn {
   width: 45px;
   aspect-ratio: 1;
@@ -42,39 +35,28 @@
   cursor: pointer;
   border: none;
 }
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .todo-app-container {
   display: block;
-  width: 400px;
+  width: 600px;
   max-width: 100%;
   margin: auto;
   height: 100vh;
   position: relative;
   overflow: hidden;
 }
-
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .todo-app-container {
-    padding: 20px;
+    padding: 10px;
   }
 }
-
 .todo-app-container h1 {
   font-size: 3rem;
   text-align: center;
 }
-
 .add-todo {
   margin-bottom: 20px;
   margin-top: 40px;
 }
-
 .add-todo .add-todo-input {
   font-weight: 700;
   padding: 15px;
@@ -85,9 +67,30 @@ body {
   border: none;
   outline: none;
 }
-
 .add-todo .add-todo-btn {
   background-color: var(--blue-color);
+}
+
+.todos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.todos-header span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--blue-color)
+}
+
+.todos-header span span {
+  font-size: 1rem;
+  color: var(--white-color)
+}
+
+.todos {
+  height: 350px;
 }
 
 .todos .todo {

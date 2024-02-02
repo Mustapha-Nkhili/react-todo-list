@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 import TodoItem from "./TodoItem";
 import { useLayoutEffect, useRef } from "react";
 import TodosFilter from "./TodosFilter";
@@ -6,7 +6,11 @@ import { selectFilteredTodoIds } from "../features/filters/filtersSlice";
 
 export default function TodoList() {
   const todosRef = useRef();
-  const filteredTodosId = useSelector(selectFilteredTodoIds)
+  const filteredTodosId = useSelector(selectFilteredTodoIds);
+  const remainingTodos = useSelector(
+    (state) => state.todos.filter((todo) => !todo.completed),
+    shallowEqual
+  );
   const MAX_HEIGHT = 350;
 
   useLayoutEffect(() => {
@@ -21,7 +25,18 @@ export default function TodoList() {
 
   return (
     <>
-      <TodosFilter />
+      <div className="todos-header">
+        <span>
+          {remainingTodos.length > 0 ? (
+            <>
+              <span>Remaining Todos :</span> {remainingTodos.length} items left
+            </>
+          ) : (
+            "All Tasks Completed"
+          )}
+        </span>
+        <TodosFilter />
+      </div>
       <main className="todos" ref={todosRef}>
         {filteredTodosId.map((todoId) => {
           return <TodoItem todoId={todoId} key={todoId} />;

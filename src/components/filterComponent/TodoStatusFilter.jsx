@@ -1,9 +1,10 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addStatusFilter } from "../../actions";
 
 export default function StatusTodosFilter() {
   const dispatch = useDispatch();
-  const status = ["all", "completed", "uncompleted"];
+  const filterStatus = useSelector((state) => state.filters.status);
+  const statusArr = ["all", "completed", "uncompleted"];
 
   function handleStatusFilter(e) {
     dispatch(addStatusFilter(e.target.value));
@@ -13,13 +14,14 @@ export default function StatusTodosFilter() {
     <>
       <div className="status-filter">
         <h2>Filter by status</h2>
-        {status.map((status, index) => (
+        {statusArr.map((status, index) => (
           <div key={index}>
             <input
               type="radio"
               name="status"
               value={status}
               id={status}
+              checked={filterStatus === status}
               onChange={handleStatusFilter}
             />
             <label htmlFor={status}>{status} todos</label>
