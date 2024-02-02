@@ -25,6 +25,14 @@ export const addTodoColor = (id, color) => ({
   color: color,
 });
 
+export const markAllTodosCompleted = () => ({
+  type: "todos/markAllTodosCompleted",
+});
+
+export const clearAllCompletedTodos = () => ({
+  type: "todos/clearAllCompletedTodos",
+});
+
 export const addStatusFilter = (status) => ({
   type: "filters/changeTodosFilterStatus",
   status: status,
@@ -37,5 +45,5 @@ export const addColorFilter = (color) => ({
 
 export const removeColorFilter = (color) => ({
   type: "filters/removeTodosFilterColor",
-  color: color
+  color: color,
 });

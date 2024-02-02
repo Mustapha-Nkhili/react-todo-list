@@ -18,11 +18,10 @@ export default function TodoList() {
       todosRef.current.style.height = `${MAX_HEIGHT}px`;
       todosRef.current.style.overflowY = "scroll";
     } else {
-      todosRef.current.style.height = "auto";
       todosRef.current.style.overflowY = "auto";
     }
   }, [todosRef]);
-
+  
   return (
     <>
       <div className="todos-header">
@@ -32,7 +31,7 @@ export default function TodoList() {
               <span>Remaining Todos :</span> {remainingTodos.length} items left
             </>
           ) : (
-            "All Tasks Completed"
+            "There's No Tasks"
           )}
         </span>
         <TodosFilter />

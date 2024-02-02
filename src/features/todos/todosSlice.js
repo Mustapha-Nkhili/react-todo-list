@@ -12,6 +12,7 @@ export default function todoReducer(state = initialState, action) {
           { id: nanoid(), text: action.text, completed: false },
         ];
         localStorage.setItem("todos", JSON.stringify(todos));
+
         return todos;
       } else {
         return [...state];
@@ -27,10 +28,11 @@ export default function todoReducer(state = initialState, action) {
         if (todo.id === action.id) {
           return { ...todo, text: action.modifiedText };
         }
+
         return todo;
       });
       localStorage.setItem("todos", JSON.stringify(todosWithEditedTodo));
-
+      
       return todosWithEditedTodo;
     }
     case "todos/toggleTodoStatus": {
@@ -41,6 +43,7 @@ export default function todoReducer(state = initialState, action) {
         return todo;
       });
       localStorage.setItem("todos", JSON.stringify(todosWithToggledTodo));
+
       return todosWithToggledTodo;
     }
     case "todos/addTodoColor": {
@@ -51,7 +54,22 @@ export default function todoReducer(state = initialState, action) {
         return todo;
       });
       localStorage.setItem("todos", JSON.stringify(todosWithColor));
+
       return todosWithColor;
+    }
+    case "todos/markAllTodosCompleted": {
+      const allCompletedTodos = state.map((todo) => {
+        return { ...todo, completed: true };
+      });
+      localStorage.setItem("todos", JSON.stringify(allCompletedTodos));
+
+      return allCompletedTodos;
+    }
+    case "todos/clearAllCompletedTodos": {
+      const uncompletedTodos = state.filter((todo) => !todo.completed);
+      localStorage.setItem("todos", JSON.stringify(uncompletedTodos));
+
+      return uncompletedTodos;
     }
     default:
       return state;

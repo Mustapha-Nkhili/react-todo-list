@@ -5,28 +5,35 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 ::-webkit-scrollbar {
   width: 17px;
 }
+
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: #d6dee1;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: #d6dee1;
   border-radius: 20px;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: #d6dee1;
   border-radius: 20px;
   border: 6px solid transparent;
   background-clip: content-box;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background-color: #a8bbbf;
 }
+
 .btn {
   width: 45px;
   aspect-ratio: 1;
@@ -35,6 +42,7 @@
   cursor: pointer;
   border: none;
 }
+
 .todo-app-container {
   display: block;
   width: 600px;
@@ -44,19 +52,23 @@
   position: relative;
   overflow: hidden;
 }
+
 @media screen and (max-width: 768px) {
   .todo-app-container {
     padding: 10px;
   }
 }
+
 .todo-app-container h1 {
   font-size: 3rem;
   text-align: center;
 }
+
 .add-todo {
   margin-bottom: 20px;
   margin-top: 40px;
 }
+
 .add-todo .add-todo-input {
   font-weight: 700;
   padding: 15px;
@@ -67,6 +79,7 @@
   border: none;
   outline: none;
 }
+
 .add-todo .add-todo-btn {
   background-color: var(--blue-color);
 }
@@ -145,7 +158,6 @@
   text-transform: capitalize;
 }
 
-
 .todos .remove-todo-btn,
 .todos .edit-todo-btn,
 .todos .cancel-edit-todo-btn,
@@ -165,7 +177,6 @@
 .todos .edit-check-btn:hover {
   background-color: var(--blue-color);
 }
-
 
 .todos .edit-todo-input {
   border: none;
@@ -229,7 +240,6 @@
   justify-content: end;
 }
 
-
 .todos-filter .filter-icon {
   width: 30px;
   aspect-ratio: 1;
@@ -256,6 +266,23 @@
   transition: 0.3s;
 }
 
+@media screen and (max-width: 650px) {
+  .todos-filter .content {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+  }
+}
+
+.todos-filter .content.display-filter-options {
+  bottom: 1px;
+  opacity: 1;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-left: 10px;
+}
+
 .todos-filter .content.display-filter-options {
   bottom: 0;
   opacity: 1;
@@ -274,4 +301,24 @@
   font-weight: 600;
   text-transform: capitalize;
   margin-left: 10px;
+}
+
+.todos-filter .mark-all-completed-btn,
+.todos-filter .clear-completed-btn {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  text-transform: capitalize;
+  background-color: var(--blue-color);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.todos-filter .mark-all-completed-btn:active,
+.todos-filter .clear-completed-btn:active {
+  transform: scale(0.9);
 }
