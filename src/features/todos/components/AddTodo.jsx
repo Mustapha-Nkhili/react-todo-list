@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { addTodo } from "../features/todos/todosSlice";
+import { addTodo } from "../todosSlice";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";

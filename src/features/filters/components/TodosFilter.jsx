@@ -5,7 +5,10 @@ import classnames from "classnames";
 import { useState } from "react";
 import TodoStatusFilter from "./filterComponent/TodoStatusFilter";
 import TodoColorFilter from "./filterComponent/TodoColorFilter";
-import { markAllTodosCompleted, clearAllCompletedTodos } from "../features/todos/todosSlice";
+import {
+  markAllTodosCompleted,
+  clearAllCompletedTodos,
+} from "../../todos/todosSlice";
 
 export default function TodosFilter() {
   const dispatch = useDispatch();

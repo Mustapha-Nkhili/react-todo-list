@@ -85,6 +85,28 @@
   background-color: var(--blue-color);
 }
 
+.empty-todo-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.empty-todo-list .empty-todo-list-img {
+  width: 50%;
+}
+
+.empty-todo-list span {
+  display: block;
+  font-weight: 600;
+  text-align: center;
+}
+
+.empty-todo-list span:last-child {
+  font-weight: 700;
+  color: var(--blue-color);
+}
+
 .todos-header {
   display: flex;
   justify-content: space-between;
@@ -127,6 +149,7 @@
   font-size: 0.9rem;
   font-weight: 600;
 }
+
 .todos .todo-text.completed {
   text-decoration: line-through;
 }

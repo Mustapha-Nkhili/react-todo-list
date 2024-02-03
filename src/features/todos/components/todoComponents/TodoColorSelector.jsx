@@ -2,18 +2,18 @@ import { useState } from "react";
 import classnames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { addTodoColor } from "../../features/todos/todosSlice";
+import { addTodoColor } from "../../todosSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function TodoColorSelector({ todoId }) {
   const dispatch = useDispatch();
-  const colorsFilter = useSelector(state => state.filters.colors);
+  const colorsFilter = useSelector((state) => state.filters.colors);
   const [isColorDisplayed, setIsColorDisplayed] = useState(false);
   const colors = ["red", "green", "blue", "orange", "purple"];
 
   function handleAddColor(color) {
-    console.log(colorsFilter)
-    dispatch(addTodoColor({id: todoId, color}));
+    console.log(colorsFilter);
+    dispatch(addTodoColor({ id: todoId, color }));
     setIsColorDisplayed(false);
   }
 
@@ -25,7 +25,7 @@ export default function TodoColorSelector({ todoId }) {
     <div className={classnames("select-colors", { clicked: isColorDisplayed })}>
       <span
         onClick={() => setIsColorDisplayed((prev) => !prev)}
-        style={{ color: todo.color  }}
+        style={{ color: todo.color }}
       >
         {todo.color === undefined ? "colors" : todo.color}{" "}
         <FontAwesomeIcon icon={faChevronDown} style={{ color: "black" }} />

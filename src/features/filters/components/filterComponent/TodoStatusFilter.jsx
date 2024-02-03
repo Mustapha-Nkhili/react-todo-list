@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { changeTodosFilterStatus } from "../../features/filters/filtersSlice";
+import { changeTodosFilterStatus } from "../../filtersSlice";
 
-export default function StatusTodosFilter() {
+export default function TodosStatusFilter() {
   const dispatch = useDispatch();
   const filterStatus = useSelector((state) => state.filters.status);
   const statusArr = ["all", "completed", "uncompleted"];

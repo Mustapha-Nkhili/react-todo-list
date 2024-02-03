@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { deleteTodo, editTodo, toggleTodoStatus } from "../features/todos/todosSlice";
+import { deleteTodo, editTodo, toggleTodoStatus } from "../todosSlice";
 import classnames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -27,7 +27,7 @@ export default function TodoItem({ todoId }) {
 
   function handleTodoEdited() {
     setIsTodoModifing(false);
-    dispatch(editTodo({id: todoId, modifiedText}));
+    dispatch(editTodo({ id: todoId, modifiedText }));
   }
 
   function handleCancelTodoEdit() {
@@ -72,7 +72,11 @@ export default function TodoItem({ todoId }) {
           >
             <FontAwesomeIcon icon={faCheck} />
           </button>
-          <span className={classnames("todo-text", {completed: todo.completed})}>{todo.text}</span>
+          <span
+            className={classnames("todo-text", { completed: todo.completed })}
+          >
+            {todo.text}
+          </span>
         </div>
       )}
       <div
