@@ -72,7 +72,7 @@ export default function TodoItem({ todoId }) {
           >
             <FontAwesomeIcon icon={faCheck} />
           </button>
-          <span className="todo-text">{todo.text}</span>
+          <span className={classnames("todo-text", {completed: todo.completed})}>{todo.text}</span>
         </div>
       )}
       <div

@@ -65,6 +65,7 @@
 }
 
 .add-todo {
+  display: flex;
   margin-bottom: 20px;
   margin-top: 40px;
 }
@@ -72,7 +73,7 @@
 .add-todo .add-todo-input {
   font-weight: 700;
   padding: 15px;
-  width: 78.5%;
+  width: 100%;
   background-color: var(--add-todo-input-bg);
   border-radius: 5px;
   margin-right: 10px;
@@ -94,7 +95,7 @@
 .todos-header span {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--blue-color)
+  color: var(--blue-color);
 }
 
 .todos-header span span {
@@ -125,6 +126,9 @@
 .todos .todo-text {
   font-size: 0.9rem;
   font-weight: 600;
+}
+.todos .todo-text.completed {
+  text-decoration: line-through;
 }
 
 .todos .toggle-status-btn {
@@ -228,9 +232,8 @@
 }
 
 .todos .todo .select-colors .select-colors-container span {
-  width: 15px;
-  aspect-ratio: 1;
-  border-radius: 50%;
+  width: 100%;
+  height: 20px;
   background-color: red;
   cursor: pointer;
 }
@@ -263,6 +266,10 @@
   border-radius: 6px 6px 0 0;
   padding: 10px;
   z-index: 4;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   transition: 0.3s;
 }
 
